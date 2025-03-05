@@ -1,3 +1,9 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/michalwrona01/studify-backend
+[submodule "mobile"]
+	path = mobile
+	url = https://github.com/michalwrona01/studify-mobile
+[submodule "bot"]
+	path = bot
+	url = https://github.com/michalwrona01/studify-bot
