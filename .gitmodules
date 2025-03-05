@@ -7,3 +7,6 @@
 [submodule "bot"]
 	path = bot
 	url = https://github.com/michalwrona01/studify-bot
+[submodule "backend-auth"]
+	path = backend-auth
+	url = https://github.com/michalwrona01/studify-backend-auth
