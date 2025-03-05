@@ -1,12 +1,16 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/michalwrona01/studify-backend
+	branch = main
 [submodule "mobile"]
 	path = mobile
 	url = https://github.com/michalwrona01/studify-mobile
+	branch = main
 [submodule "bot"]
 	path = bot
 	url = https://github.com/michalwrona01/studify-bot
+	branch = main
 [submodule "backend-auth"]
 	path = backend-auth
 	url = https://github.com/michalwrona01/studify-backend-auth
+	branch = main
