@@ -15,6 +15,8 @@ services:
       - IPC_LOCK
     command: server
     restart: always
+    networks:
+      - studify
 
   vault-init:
     image: hashicorp/vault:latest
@@ -30,6 +32,12 @@ services:
     restart: on-failure
     depends_on:
       - vault
+    networks:
+      - studify
 
 volumes:
   vault-data:
+
+networks:
+  studify:
+    external: true
