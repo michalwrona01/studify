@@ -5,7 +5,7 @@ services:
     container_name: vault
     hostname: vault
     ports:
-      - 8200:8200
+      - "40374:8200"
     volumes:
       - ./config.hcl:/vault/config/config.hcl
       - vault-data:/vault/file/
