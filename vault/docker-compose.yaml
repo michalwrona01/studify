@@ -6,7 +6,7 @@ services:
     container_name: vault
     hostname: vault
     ports:
-      - "40374:8200"
+      - "8200:8200"
     volumes:
       - ./config.hcl:/vault/config/config.hcl
       - vault-data:/vault/file/
@@ -17,7 +17,7 @@ services:
     command: server
     restart: always
     networks:
-      - studify
+      - mikurs-net
 
   vault-init:
     image: hashicorp/vault:latest
@@ -34,11 +34,11 @@ services:
     depends_on:
       - vault
     networks:
-      - studify
+      - mikurs-net
 
 volumes:
   vault-data:
 
 networks:
-  studify:
+  mikurs-net:
     external: true
