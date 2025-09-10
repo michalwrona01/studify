@@ -15,7 +15,7 @@ services:
     command: server
     restart: always
     networks:
-      - mikurs-net
+      - mikrus-net
 
   vault-init:
     image: hashicorp/vault:latest
@@ -32,11 +32,11 @@ services:
     depends_on:
       - vault
     networks:
-      - mikurs-net
+      - mikrus-net
 
 volumes:
   vault-data:
 
 networks:
-  mikurs-net:
+  mikrus-net:
     external: true
