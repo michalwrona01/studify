@@ -30,7 +30,7 @@ services:
     command: /usr/local/bin/vault-init.sh
     restart: on-failure
     depends_on:
-      - vault
+      - studify-vault
     networks:
       - mikrus-net
 
