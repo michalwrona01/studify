@@ -6,4 +6,4 @@ BACKEND="backend/docker-compose-prod.yaml"
 BOT="bot/docker-compose-prod.yaml"
 
 
-docker-compose -f $VAULT -f $BACKEND -f $BOT up
+docker compose -f $VAULT -f $BACKEND -f $BOT up
