@@ -9,4 +9,4 @@ echo $VAULT
 echo $BACKEND
 echo $BOT
 
-docker compose -f $VAULT -f $BACKEND -f $BOT up
+docker compose -f $VAULT -f $BACKEND -f $BOT up --build
