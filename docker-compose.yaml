@@ -1,0 +1,70 @@
+services:
+  studify-vault:
+    image: hashicorp/vault:latest
+    container_name: studify-vault
+    hostname: vault
+    ports:
+      - "40374:8200"
+    volumes:
+      - ./config.hcl:/vault/config/config.hcl
+      - vault-data:/vault/file/
+    environment:
+      - VAULT_ADDR=http://localhost:8200
+    cap_add:
+      - IPC_LOCK
+    command: server
+    restart: always
+    networks:
+      - mikrus-net
+
+  studify-vault-init:
+    image: hashicorp/vault:latest
+    container_name: studify-vault-init
+    environment:
+      - VAULT_ADDR=http://vault:8200
+      - MY_VAULT_TOKEN=${MY_VAULT_TOKEN:-test}
+    volumes:
+      - ./vault-root-token:/vault/file/vault-root-token
+      - ./vault-init.sh:/usr/local/bin/vault-init.sh
+      - vault-data:/vault/file/
+    command: /usr/local/bin/vault-init.sh
+    restart: on-failure
+    depends_on:
+      - studify-vault
+    networks:
+      - mikrus-net
+
+  bot:
+    build: ./bot
+    volumes:
+      - ./bot:/app
+    container_name: bot
+    command: bash -c "while true; do python main.py; sleep 300; done"
+    env_file:
+      - ./environment/prod/bot/bot.env
+    depends_on:
+      - studify-vault
+    networks:
+      - mikrus-net
+    
+  backend:
+    build: ./backend
+    container_name: studify-backend
+    command: fastapi run main.py
+    restart: always
+    env_file:
+      - ./environment/prod/backend/db.env
+    ports:
+      - "80:8080"
+    depends_on:
+      - studify-vault
+    networks:
+      - mikrus-net
+
+
+volumes:
+  vault-data:
+
+networks:
+  mikrus-net:
+    external: true
