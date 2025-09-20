@@ -34,11 +34,11 @@ services:
     networks:
       - mikrus-net
 
-  bot:
+  studify-bot:
     build: ./bot
     volumes:
       - ./bot:/app
-    container_name: bot
+    container_name: studify-bot
     command: bash -c "while true; do python main.py; sleep 300; done"
     env_file:
       - ./environment/prod/bot/bot.env
@@ -47,7 +47,7 @@ services:
     networks:
       - mikrus-net
     
-  backend:
+  studify-backend:
     build: ./backend
     container_name: studify-backend
     command: fastapi run main.py
