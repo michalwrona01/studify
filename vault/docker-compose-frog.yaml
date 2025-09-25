@@ -15,7 +15,7 @@ services:
     command: server
     restart: always
     networks:
-      - mikrus-net
+      - frog-net
 
   studify-vault-init:
     image: hashicorp/vault:latest
@@ -38,5 +38,5 @@ volumes:
   vault-data:
 
 networks:
-  mikrus-net:
+  frog-net:
     external: true
