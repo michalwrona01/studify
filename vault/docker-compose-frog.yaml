@@ -1,0 +1,42 @@
+services:
+  studify-vault:
+    image: hashicorp/vault:latest
+    container_name: studify-vault
+    hostname: vault
+    ports:
+      - "20706:8200"
+    volumes:
+      - ./config.hcl:/vault/config/config.hcl
+      - vault-data:/vault/file/
+    environment:
+      - VAULT_ADDR=http://localhost:8200
+    cap_add:
+      - IPC_LOCK
+    command: server
+    restart: always
+    networks:
+      - mikrus-net
+
+  studify-vault-init:
+    image: hashicorp/vault:latest
+    container_name: studify-vault-init
+    environment:
+      - VAULT_ADDR=http://vault:8200
+      - MY_VAULT_TOKEN=${MY_VAULT_TOKEN:-test}
+    volumes:
+      - ./vault-root-token:/vault/file/vault-root-token
+      - ./vault-init.sh:/usr/local/bin/vault-init.sh
+      - vault-data:/vault/file/
+    command: /usr/local/bin/vault-init.sh
+    restart: on-failure
+    depends_on:
+      - studify-vault
+    networks:
+      - frog-net
+
+volumes:
+  vault-data:
+
+networks:
+  mikrus-net:
+    external: true
