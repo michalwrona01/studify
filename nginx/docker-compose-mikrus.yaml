@@ -1,0 +1,13 @@
+services:
+  studify-nginx:
+    container_name: studify-nginx
+    restart: always
+    build: .
+    ports:
+      - "80:80"
+    networks:
+      - mikrus-net
+
+networks:
+  mikrus-net:
+    external: true
