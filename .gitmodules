@@ -14,3 +14,6 @@
 	path = backend-auth
 	url = https://github.com/michalwrona01/studify-backend-auth
 	branch = main
+[submodule "teams-bot"]
+	path = teams-bot
+	url = git@github.com:michalwrona01/teams-bot.git
