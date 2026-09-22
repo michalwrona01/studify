@@ -5,10 +5,12 @@ services:
     build: .
     ports:
       - "80:80"
+      - "100.101.102.103:443"
     networks:
       - mikrus-net
     volumes:
       - ./html/poradnik:/var/www/poradnik
+      - ../certs:/etc/certs
 
 networks:
   mikrus-net:
