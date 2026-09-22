@@ -10,7 +10,7 @@ services:
       - mikrus-net
     volumes:
       - ./html/poradnik:/var/www/poradnik
-      - ../certs:/etc/certs
+      - ./certs:/etc/certs
 
 networks:
   mikrus-net:
