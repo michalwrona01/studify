@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="148 3 1624 1076">
+  <title id="title">MW logo</title>
+  <desc id="desc">Geometric MW monogram in vivid red.</desc>
+  <g fill="#FF002A">
+    <path d="M148 88 L677 584 L678 88 H853 V1079 L326 584 L325 1079 H149 Z"/>
+    <path d="M896 198 H1097 V515 L1517 3 H1772 L1527 299 L896 1078 Z"/>
+  </g>
+</svg>
