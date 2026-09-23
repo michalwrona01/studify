@@ -9,6 +9,7 @@ services:
       - mikrus-net
     volumes:
       - ./html/poradnik:/var/www/poradnik
+      - ./html/newvision:/var/www/newvision
       - ./certs:/etc/certs
 
 networks:
