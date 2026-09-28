@@ -2,11 +2,13 @@ services:
   nginx:
     container_name: nginx
     restart: always
+    security_opt:
+      - no-new-privileges:true
     build: .
     ports:
       - "80:80"
     volumes:
-      - ./html/poradnik:/var/www/poradnik
+      - ./html/poradnik:/var/www/poradnik:ro
     networks:
       - net
 

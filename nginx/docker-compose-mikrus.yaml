@@ -2,15 +2,17 @@ services:
   studify-nginx:
     container_name: studify-nginx
     restart: always
+    security_opt:
+      - no-new-privileges:true
     build: .
     ports:
       - "80:80"
     networks:
       - mikrus-net
     volumes:
-      - ./html/poradnik:/var/www/poradnik
-      - ./html/newvision:/var/www/newvision
-      - ./certs:/etc/certs
+      - ./html/poradnik:/var/www/poradnik:ro
+      - ./html/newvision:/var/www/newvision:ro
+      - ./certs:/etc/certs:ro
 
 networks:
   mikrus-net:
